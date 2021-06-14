@@ -90,13 +90,13 @@ def main():
 
         # Set thje movement oft the rectangle
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]: # left 
+        if keys[pygame.K_LEFT]: # left 
             ship.x -= plyaer_vel
-        if keys[pygame.K_d]: # right
+        if keys[pygame.K_RIGHT]: # right
             ship.x += plyaer_vel
-        if keys[pygame.K_w]: # up 
+        if keys[pygame.K_UP]: # up 
             ship.y -= plyaer_vel
-        if keys[pygame.K_s]: #down
+        if keys[pygame.K_DOWN]: #down
             ship.y += plyaer_vel
 
 
