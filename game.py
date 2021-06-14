@@ -39,7 +39,20 @@ class Ship:
         self.lasers = []
         self.cool_down_counter = 0
     def draw(self, window):
-        pygame.draw.rect(window, (255,0,0), (self.x, self.y, 50, 50))
+        window.blit(self.ship_img, (self.x, self.y))
+
+
+# Ship extends Players
+class Player(Ship):
+    def __init__(self, x, y, health=100):
+        super().__init__(x, y, health)
+        self.ship_img = YELLOW_SPACE_SHIP
+        self.laser_img = YELLOW_LASER
+
+        # the mask gives us the pixel from a picture
+        self.mask = pygame.mask.from_surface(self.ship_img)
+        self.max_health = health
+
 
 
 # Game Settings
@@ -51,7 +64,7 @@ def main():
     main_font = pygame.font.SysFont("comicsans", 50)
 
     # how manyy steps by on time clicking the key
-    plyaer_vel = 5
+    player_vel = 5
 
     ship = Ship(300, 650)
 
@@ -88,16 +101,15 @@ def main():
                 run = False
 
 
-        # Set thje movement oft the rectangle
+        # Set thje movement oft the rectangle -> + 50 because i have to check the right border of the rectangle
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]: # left 
-            ship.x -= plyaer_vel
-        if keys[pygame.K_RIGHT]: # right
-            ship.x += plyaer_vel
-        if keys[pygame.K_UP]: # up 
-            ship.y -= plyaer_vel
-        if keys[pygame.K_DOWN]: #down
-            ship.y += plyaer_vel
-
+        if keys[pygame.K_LEFT] and ship.x - player_vel > 0: # left 
+            ship.x -= player_vel
+        if keys[pygame.K_RIGHT] and ship.x + player_vel + 50 < WIDTH: # right
+            ship.x += player_vel 
+        if keys[pygame.K_UP] and ship.y - player_vel > 0: # up 
+            ship.y -= player_vel
+        if keys[pygame.K_DOWN] and ship.y + player_vel + 50 < HEIGHT: #down
+            ship.y += player_vel
 
 main()
