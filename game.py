@@ -28,6 +28,17 @@ YELLOW_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_yellow.png"
 # BG 
 BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background-black.png")), (WIDTH, HEIGHT))
 
+# Abstract Klasse, because we have friendly ships and enemy ships
+class Ship:
+    def __init__(self, x, y, color, health=100):
+        self.x = x
+        self.y = y
+        self.health = health
+        self.ship_img = None
+        self.laser_img = None
+        self.lasers = []
+        self.cool_down_counter = 0
+
 
 # Game Settings
 def main(): 
@@ -53,6 +64,8 @@ def main():
         # Blit the Level and Lives to the Surface
         WIN.blit(lives_label, (10,10))
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
+
+       
 
 
         pygame.display.update()
