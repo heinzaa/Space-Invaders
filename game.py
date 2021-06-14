@@ -3,6 +3,9 @@ import os
 import time
 import random
 
+#initialze the Fonts in pygame
+pygame.font.init()
+
 #Set our Display
 WIDTH, HEIGHT = 750, 750
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -30,8 +33,14 @@ BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background
 def main(): 
     run = True
     FPS = 60
+    level = 1
+    lives = 5
+
+
     clock = pygame.time.Clock()
 
+
+    # Update the window (inside method to have access to the variables)
     def redraw_window():
         #Pygame Surface, BLIT drwas it to the window to the given location -> 0,0 is top left 
         WIN.blit(BG, (0,0))
