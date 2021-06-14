@@ -66,7 +66,7 @@ def main():
     # how manyy steps by on time clicking the key
     player_vel = 5
 
-    ship = Ship(300, 650)
+    player = Player(300, 650)
 
     clock = pygame.time.Clock()
 
@@ -84,7 +84,7 @@ def main():
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
         
         # Draw the Ship
-        ship.draw(WIN)
+        player.draw(WIN)
 
         pygame.display.update()
 
@@ -103,13 +103,13 @@ def main():
 
         # Set thje movement oft the rectangle -> + 50 because i have to check the right border of the rectangle
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and ship.x - player_vel > 0: # left 
-            ship.x -= player_vel
-        if keys[pygame.K_RIGHT] and ship.x + player_vel + 50 < WIDTH: # right
-            ship.x += player_vel 
-        if keys[pygame.K_UP] and ship.y - player_vel > 0: # up 
-            ship.y -= player_vel
-        if keys[pygame.K_DOWN] and ship.y + player_vel + 50 < HEIGHT: #down
-            ship.y += player_vel
+        if keys[pygame.K_LEFT] and player.x - player_vel > 0: # left 
+            player.x -= player_vel
+        if keys[pygame.K_RIGHT] and player.x + player_vel + 50 < WIDTH: # right
+            player.x += player_vel 
+        if keys[pygame.K_UP] and player.y - player_vel > 0: # up 
+            player.y -= player_vel
+        if keys[pygame.K_DOWN] and player.y + player_vel + 50 < HEIGHT: #down
+            player.y += player_vel
 
 main()
