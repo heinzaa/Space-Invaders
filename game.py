@@ -50,6 +50,9 @@ def main():
     lives = 5
     main_font = pygame.font.SysFont("comicsans", 50)
 
+    # how manyy steps by on time clicking the key
+    plyaer_vel = 5
+
     ship = Ship(300, 650)
 
     clock = pygame.time.Clock()
@@ -66,7 +69,8 @@ def main():
         # Blit the Level and Lives to the Surface
         WIN.blit(lives_label, (10,10))
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
-
+        
+        # Draw the Ship
         ship.draw(WIN)
 
         pygame.display.update()
@@ -82,5 +86,18 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+
+
+        # Set thje movement oft the rectangle
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]: # left 
+            ship.x -= plyaer_vel
+        if keys[pygame.K_d]: # right
+            ship.x += plyaer_vel
+        if keys[pygame.K_w]: # up 
+            ship.y += plyaer_vel
+        if keys[pygame.K_s]: #down
+            ship.y -= plyaer_vel
+
 
 main()
