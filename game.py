@@ -30,7 +30,7 @@ BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background
 
 # Abstract Klasse, because we have friendly ships and enemy ships
 class Ship:
-    def __init__(self, x, y, color, health=100):
+    def __init__(self, x, y, health=100):
         self.x = x
         self.y = y
         self.health = health
@@ -52,9 +52,7 @@ def main():
 
     ship = Ship(300, 650)
 
-
     clock = pygame.time.Clock()
-
 
     # Update the window (inside method to have access to the variables)
     def redraw_window():
@@ -69,7 +67,7 @@ def main():
         WIN.blit(lives_label, (10,10))
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
 
-        Ship.draw(WIN)
+        ship.draw(WIN)
 
         pygame.display.update()
 
