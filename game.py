@@ -95,9 +95,9 @@ def main():
         if keys[pygame.K_d]: # right
             ship.x += plyaer_vel
         if keys[pygame.K_w]: # up 
-            ship.y += plyaer_vel
-        if keys[pygame.K_s]: #down
             ship.y -= plyaer_vel
+        if keys[pygame.K_s]: #down
+            ship.y += plyaer_vel
 
 
 main()
