@@ -23,7 +23,7 @@ GREEN_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_green.png"))
 YELLOW_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_yellow.png"))
 
 # BG 
-BG = pygame.image.load(os.path.join("assets", "background-black.png"))
+BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background-black.png")), (WIDTH, HEIGHT))
 
 
 # Game Settings
@@ -32,13 +32,19 @@ def main():
     FPS = 60
     clock = pygame.time.Clock()
 
+    def redraw_window():
+        #Pygame Surface, BLIT drwas it to the window to the given location -> 0,0 is top left 
+        WIN.blit(BG, (0,0))
+        pygame.display.update()
+
 
 
     # Game Loop
     while run:
         clock.tick(FPS)
+        redraw_window()
 
-        # every frame per second pygame give us the event the user does
+        # every 60 per second pygame give us the event the user does
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
